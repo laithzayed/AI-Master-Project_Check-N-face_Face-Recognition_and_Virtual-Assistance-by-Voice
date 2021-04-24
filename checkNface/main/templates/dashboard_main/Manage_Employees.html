@@ -1,0 +1,110 @@
+{% extends 'dashboard_layouts/main_dashboard.html' %}
+
+{% block content %}
+{% load static %}
+    <!-- begin:: Content -->
+
+    <!--Begin::Dashboard 1-->
+    <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
+
+        <div class="kt-portlet__foot" style="margin-top:10px ">
+                            <div class="kt-form__actions">
+
+                                    <div class="col-md-6">
+
+                                    </div>
+
+                            </div>
+        <!-- begin:: Content Head -->
+        <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+            <div class="kt-subheader__main">
+                <h3 class="kt-subheader__title">Manage Employees</h3>
+                <span class="kt-subheader__separator kt-subheader__separator--v"></span>
+                <span class="kt-subheader__desc">If you need any help go for Help section</span>
+                <a href="{% url 'helps' %}" class="btn btn-label-warning btn-bold btn-sm btn-icon-h kt-margin-l-10">
+                    Go Now
+                </a>
+              </div>
+
+        </div>
+    </div>
+
+    <!-- begin:: Content -->
+    <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <!--begin::Portlet-->
+                <div class="kt-portlet">
+
+
+
+
+                    <!--end::Form-->
+                </div></div>
+
+            <!--end::Portlet-->
+
+            <div class="container-fluid">
+                <!--begin::Portlet-->
+                <div class="kt-portlet">
+                    <div class="kt-portlet__head">
+                        <div class="kt-portlet__head-label">
+                            <h3 class="kt-portlet__head-title">
+                                Show ALL Employees ||
+                            </h3>
+                            <a  class="btn btn btn-success" href="{% url 'add_employees' %}" >Add new employees</a>
+                        </div>
+                    </div>
+                    <div class="kt-portlet__body">
+
+                        <!--begin::Section-->
+                        <div class="kt-section">
+												<span class="kt-section__info">
+													*Note: Make sure before uploaded to let users image name will be the same of your username (employees, students...etc).
+												</span>
+                            <div class="kt-section__content">
+                                <table class="table table-striped">
+                                    <thead class="thead-dark" style="text-align:center">
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Image</th>
+{#{{--                                    <th>Phone</th>--}}#}
+{#{{--                                    <th>Address</th>--}}#}
+                                    <th>Address</th>
+{#{{--                                    <th>Gender</th>--}}#}
+                                    <th>Action</th>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+
+                                   {% for employees in employees %}
+                                        <tr style="text-align:center">
+                                            <td>{{ employees.id}} </td>
+                                            <td>{{ employees.employee_name}} </td>
+                                            <td>{{ employees.employee_email }}</td>
+                                            <td><img src="{%static 'uploads/ImageAttendance/' %}{{ employees.image }}" alt="{{ employee.image }}" border-radius='20%' cursor='pointer' width='80px' height='80px' ></td>
+                                            <td>{{ employees.employee_address }}</td>
+                                            <td><a href="/edit/{{ employees.id }}" style="color:darkblue"><i class="fas fa-edit"></i></a>
+                                            <a href="/delete/{{ employees.id }}" style="color:red"><i class="far fa-trash-alt"></i></a></td>
+
+                                        </tr>
+                                  {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!--end::Section-->
+                    </div>
+                </div>
+                <!--End::Section-->
+                <!--End::Dashboard 1-->
+            </div>
+            <!-- end:: Content -->
+        </div>
+    </div>
+
+    <!-- end:: Page --
+{% endblock %}
+

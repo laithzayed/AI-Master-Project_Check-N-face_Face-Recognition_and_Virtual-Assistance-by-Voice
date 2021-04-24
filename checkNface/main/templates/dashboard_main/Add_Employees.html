@@ -1,0 +1,162 @@
+{% extends 'dashboard_layouts/main_dashboard.html' %}
+
+{% block content %}
+{% load static %}
+    <!-- begin:: Content -->
+
+    <!--Begin::Dashboard 1-->
+    <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
+
+        <!-- begin:: Content Head -->
+        <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+            <div class="kt-subheader__main">
+                <h3 class="kt-subheader__title">Manage Employees</h3>
+                <span class="kt-subheader__separator kt-subheader__separator--v"></span>
+                <span class="kt-subheader__desc">If you need any help go for Help section</span>
+                <a href="{% url 'helps' %}" class="btn btn-label-warning btn-bold btn-sm btn-icon-h kt-margin-l-10">
+                    Go Now
+                </a>
+              </div>
+
+        </div>
+    </div><br>
+
+    <!-- begin:: Content -->
+    <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <!--begin::Portlet-->
+                <div class="kt-portlet">
+                    <div class="kt-portlet__head">
+                        <div class="kt-portlet__head-label">
+                            <h3 class="kt-portlet__head-title">
+                                Add New Employee
+                            </h3>
+                        </div>
+                    </div>
+
+                    <!--begin::Form-->
+                        <form method="POST" action="/add_new_employee" enctype="multipart/form-data" class="kt-form kt-form--label-right">
+                            {% csrf_token %}
+                            {{ form }}
+                        <div class="kt-portlet__body">
+                            <div class="form-group row">
+                                <div class="col-lg-6">
+                                    <label>Full Name</label>
+                                    <input id="cc-pament" name="employee_name" type="text" class="form-control" placeholder="Enter your Full Name" required>
+                                    <span class="form-text text-muted">Please enter your full name</span>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label for="cc-payment" class="control-label mb-1">Image</label>
+                                    <input id="cc-pament" name="image" type="file" class="form-control"  style="padding-bottom:35px">
+                                    <div></div>
+                                    <span class="form-text text-muted">Please enter very clear Image for your employee. (If you need more information go to help section)</span>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <div class="col-lg-6">
+                                    <label>Email</label>
+                                    <div class="kt-input-icon">
+                                        <input type="email" name="employee_email" class="form-control" placeholder="Enter your email">
+                                        <span class="kt-input-icon__icon kt-input-icon__icon--right"></span>
+                                    </div>
+                                    <span class="form-text text-muted">Please enter your email</span>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label>Password</label>
+                                    <div class="kt-input-icon">
+                                        <input type="password" name="employee_password" class="form-control" placeholder="Enter your password">
+                                        <span class="kt-input-icon__icon kt-input-icon__icon--right"></span>
+                                    </div>
+                                    <span class="form-text text-muted">Please enter your password</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-lg-6">
+                                    <label>Phone</label>
+                                    <div class="kt-input-icon">
+                                        <input type="text" name="employee_phone" class="form-control" placeholder="Enter your phone">
+                                        <span class="kt-input-icon__icon kt-input-icon__icon--right"></span>
+                                    </div>
+                                    <span class="form-text text-muted">Please enter your phone</span>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label>Address</label>
+                                    <div class="kt-input-icon">
+                                        <input type="text" name="employee_address" class="form-control" placeholder="Enter your address">
+                                        <span class="kt-input-icon__icon kt-input-icon__icon--right"><span><i class="la la-map-marker"></i></span></span>
+                                    </div>
+                                    <span class="form-text text-muted">Please enter your address</span>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <div class="col-lg-6">
+                                    <label>Employee Latitude</label>
+                                    <div class="kt-input-icon">
+                                        <input type="text" name="employee_latitude" class="form-control" placeholder="Enter your latitude">
+                                        <span class="kt-input-icon__icon kt-input-icon__icon--right"><span><i class="la la-map-marker"></i></span></span>
+                                    </div>
+                                    <span class="form-text text-muted">Please enter your latitude</span>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label>Employee Longitude</label>
+                                    <div class="kt-input-icon">
+                                        <input type="text" name="employee_longitude" class="form-control" placeholder="Enter your longitude">
+                                        <span class="kt-input-icon__icon kt-input-icon__icon--right"><span><i class="la la-map-marker"></i></span></span>
+                                    </div>
+                                    <span class="form-text text-muted">Please enter your longitude</span>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <div class="col-lg-6">
+                                    <label>Employee Gender:</label>
+                                    <div class="kt-radio-inline">
+                                        <label class="kt-radio kt-radio--solid">
+                                            <input type="radio" name="employee_gender" checked value="True"> Male
+                                            <span></span>
+                                        </label>
+                                        <label class="kt-radio kt-radio--solid">
+                                            <input type="radio" name="employee_gender" value="False"> Female
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                    <span class="form-text text-muted">Select employee gender</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="kt-portlet__foot">
+                            <div class="kt-form__actions">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <button type="submit" name="submit" class="btn btn-success btn-fill btn-block">Add</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!--end::Form-->
+                </div></div>
+
+            <!--end::Portlet-->
+
+
+            <!-- end:: Content -->
+        </div>
+    </div>
+
+    <!-- end:: Page --
+{% endblock %}
+

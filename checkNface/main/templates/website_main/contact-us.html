@@ -1,0 +1,49 @@
+{% extends 'website_layouts/main_website.html' %}
+
+{% block content %}
+{% load static %}
+
+
+   <!-- Header -->
+    <header id="home" class="header text-white text-center text-lg-left" style="background-color: #000001" ><br>
+      <div class="container text-center">
+          <h1 class="display-4"><strong>Let's Get In Touch</strong></h1>
+        <p class="lead-2 mt-6">Here are the ways you can contact us with any questions you have</p><hr>
+          <h2>Head Office</h2>
+           <p>Queen Noor Street<br>Amman, Jordan</p>
+              <p>Phone: +962 77 887 2361<br>Email: info@checknface.com</p>
+      </div><br>
+
+    <div class="container">
+
+          <div class="row">
+            <form class="col-lg-6 mx-auto p-6 bg-gray rounded" action="{% url 'add_new_contact' %}" method="POST"  enctype="multipart/form-data" style="background-color:#f1f1f1; border-radius: 20px">
+                  {% csrf_token %}
+              <h3 style="color:black; text-align:center">We will contact you back soon.</h3><br>
+              <div class="alert alert-success d-on-success">Check your email in 24 hours. We will contact you soon.</div>
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <input class="form-control form-control-lg" type="text" name="name" placeholder="Your Name">
+                </div>
+
+                <div class="form-group col-md-6">
+                  <input class="form-control form-control-lg" type="email" name="email" placeholder="Your Email Address">
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <textarea class="form-control form-control-lg" rows="4" placeholder="Your Message" name="message"></textarea>
+              </div>
+
+              <div class="text-center">
+                <button class="btn btn-lg btn-success" type="submit">Submit Inquiry</button>
+              </div>
+            </form>
+          </div>
+        </div>
+    </header><!-- /.header -->
+
+
+{% endblock %}

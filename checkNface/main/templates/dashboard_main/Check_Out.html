@@ -1,0 +1,80 @@
+{% extends 'dashboard_layouts/main_dashboard.html' %}
+
+{% block content %}
+{% load static %}
+<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
+
+    <!-- begin:: Content Head -->
+    <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+        <div class="kt-subheader__main">
+            <h3 class="kt-subheader__title">Check Out</h3>
+            <span class="kt-subheader__separator kt-subheader__separator--v"></span>
+            <span class="kt-subheader__desc">If you need any help go for Help section</span>
+            <a href="{% url 'helps' %}" class="btn btn-label-warning btn-bold btn-sm btn-icon-h kt-margin-l-10">
+                Go Now
+            </a>
+            <div class="kt-input-icon kt-input-icon--right kt-subheader__search kt-hidden">
+                <input type="text" class="form-control" placeholder="Search order..." id="generalSearch">
+                <span class="kt-input-icon__icon kt-input-icon__icon--right">
+										<span><i class="flaticon2-search-1"></i></span>
+									</span>
+            </div>
+        </div>
+
+    </div>
+</div><br>
+
+<div class="container-fluid col-10">
+    <!--begin::Portlet-->
+    <div class="kt-portlet">
+        <div class="kt-portlet__head">
+            <div class="kt-portlet__head-label">
+                <h3 class="kt-portlet__head-title">
+                    Show ALL Check Out Employees
+                </h3>
+            </div>
+        </div>
+        <div class="kt-portlet__body">
+
+            <!--begin::Section-->
+            <div class="kt-section">
+												<span class="kt-section__info">
+													*All Employees will shown in red color, This mean this is the exact Date and Time for Check-Out Time for attendance.
+												</span>
+                <div class="kt-section__content" style="text-align: center">
+                    <table class="table table-striped">
+                        <thead class="thead-dark" style="text-align:center">
+                        <th><strong>#</strong></th>
+                        <th><strong>Name</strong></th>
+                        <th><strong>Day</strong></th>
+                        <th><strong>Time</strong></th>
+{#                        {{--                        <th>Edit</th>--}}#}
+{#                        {{--                        <th>Delete</th>--}}#}
+                        </thead>
+                            <tbody>
+                        <tr>
+
+                        {% for employee_checkout in employee_checkout %}
+                            <tr>
+                                <td>{{employee_checkout.id}}</td>
+                                <td>{{employee_checkout.name}}</td>
+                                <td>{{employee_checkout.day}}</td>
+                                <td style="color: #bf0000"><strong>{{employee_checkout.time}}</strong></td>
+{#{{--                                <td><a href="/Employee/{{$employee->id}}/edit" class='btn btn-warning'>Edit</a></td>--}}#}
+{#{{--                                <td><a href="/Employee/{{$employee->id}}/delete" class='btn btn-danger'>Delete</a></td>--}}#}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!--end::Section-->
+        </div>
+    </div>
+    <!--End::Section-->
+    <!--End::Dashboard 1-->
+</div>
+
+
+{% endblock %}
+

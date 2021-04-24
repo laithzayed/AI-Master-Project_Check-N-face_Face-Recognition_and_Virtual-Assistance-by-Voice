@@ -1,0 +1,162 @@
+{% extends 'website_layouts/main_website.html' %}
+
+{% block content %}
+{% load static %}
+
+    <!-- Header -->
+    <header id="home" class="header text-white h-fullscreen text-center text-lg-left" style="background-color: #000001" >
+      <canvas class="constellation" data-color="rgba(255,255,255,0.3)"></canvas>
+      <div class="container">
+        <div class="row align-items-center h-100">
+
+          <div class="col-lg-6">
+            <h3>How Check N Face will <span class="text-primary" data-typing="help you, enhance your company, professionalize a work, do more and more"></span></h3>
+            <p class="lead mt-5 mb-8">
+            ✓ Attendance checked using Artificial Intelligence.<br>
+            ✓ Faster and easier.<br>
+            ✓ Review your (employees, students, ...etc) attendance.<br>
+            ✓ Check attendance anywhere and anytime.<br>
+            ✓ Using it without touch any device.<br>
+            ✓ Dashboard to make everything easy to use.<br>
+            </p>
+            <p class="gap-xy">
+              <a class="btn btn-round btn-outline-light mw-150" href="#starter">Learn more</a>
+              <a class="btn btn-round btn-light mw-150" href="{% url 'request-demo' %}">Request a Demo</a>
+            </p>
+          </div>
+
+          <div class="col-lg-6 ml-auto">
+            <img class="mt-6" src="{%static 'assets/img/preview/home_slider.gif' %}" alt="img" style="border-radius:20px">
+          </div>
+        </div>
+
+            <div class="row text-center" style="color:white">
+            <div class="col">
+              <a class="scroll-down-3 scroll-down-white" href="#starter">
+                <span></span><span></span>
+            </div>
+              </a>
+          </div>
+        </div>
+    </header><!-- /.header -->
+
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <!--
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      | Welcome
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      !-->
+      <section id="starter" class="section" style="background-color:#f6f6f6">
+        <div class="container">
+          <header class="section-header">
+            <h2>How It Works</h2>
+            <p class="lead" style="color:black">The solution captures employees with a web camera, detects and aligns faces into bounding boxes, encodes them, and combs through the pre-loaded reference photo base to find similar faces. After calculating the similarity indexes of the recognized and reference faces, the application lists the results from the most to least matching faces.</p>
+          </header>
+
+
+
+          <div class="row gap-y">
+
+            <div class="col-md-10 mx-auto">
+              <img src="{%static 'assets/img/main-website/work-flow.png' %}" alt="..." data-aos="fade-up" data-aos-duration="2000">
+
+        </div>
+      </section>
+
+
+ <!--
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      | Fixed Background image
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      !-->
+      <section class="section bg-fixed text-white" src="assets/img/preview/dribbble-6.png" style="background-image: url({% static 'assets/img/main-website/5.png' %})" data-overlay="5">
+        <div class="container">
+          <header class="section-header">
+            <small>Our Technology</small>
+            <h2>Our Face Recognition Algorithm</h2>
+            <hr>
+              <p>We use a high <code>face recognition</code> technology to enhance your business up using latest detection <code>algorithm</code> using <code>Artificial Intelligence</code> and <code>Machine Learning.</code></p>
+          </header>
+
+            <p class="text-center">We are working to produce a newer <code>algorithm</code> to follow all of a new technology.</p>
+        </div>
+      </section>
+
+
+      <!--
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      | Features
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      !-->
+      <section id="section-features" class="section bg-gray">
+        <div class="container">
+          <header class="section-header">
+            <h2>More to Discover</h2>
+            <hr>
+            <p class="lead">We start working depending on a high demand for a new attendance system</p>
+          </header>
+
+
+          <div class="row gap-y align-items-center">
+            <div class="col-md-6 ml-auto">
+              <h4>Who We Are?</h4>
+              <p>We start working when we found the market to be in dire need a high demand on a new systems for attendance system overall.<br><br>Especially in COVID-19 pandemic most of companies make a high restrictions and awareness’s  about how they can check attendance without touching any devices or for companies that choose to work remotely. This gave us the incentive to create our new attendance system using the latest technology in Artificial Intelligence and machine learning with neural network deeply in using the face recognition.</p>
+            </div>
+
+            <div class="col-md-5 order-md-first">
+              <img class="rounded shadow-2" src="{%static 'assets/img/main-website/head_ai.gif' %}" alt="...">
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+  <!--
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      | Block 2
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      !-->
+
+      <section class="section text-white" style="background-color: #1f162f; padding-top: 0px; padding-bottom: 0px;">
+        <div class="container">
+          <div class="row gap-y text-center">
+
+            <div class="col-md-4">
+              <p class="small text-uppercase ls-2">Companies used Check N Face</p>
+              <p class="lead-8 lh-1 fw-700" data-provide="countup" data-from="0" data-to="42"></p>
+            </div>
+
+            <div class="col-md-4">
+              <p class="small text-uppercase ls-2">Happy Customers</p>
+              <p class="lead-8 lh-1 fw-700" data-provide="countup" data-from="0" data-to="153"></p>
+            </div>
+
+            <div class="col-md-4">
+              <p class="small text-uppercase ls-2">User Satisfaction</p>
+              <p class="lead-8 lh-1 fw-700" data-provide="countup" data-from="0" data-to="100" data-prefix="%"></p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+         <!--
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      | Block 5
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      !-->
+
+
+      <section class="section bg-fixed text-white text-center py-11" style="background-image: url({% static 'assets/img/main-website/new_value.gif' %})" data-overlay="3">
+        <div class="container">
+          <h3 class="display-1"><strong>Make a New Value to Your Company</strong></h3>
+        </div>
+      </section>
+
+
+    </main>
+
+{% endblock %}

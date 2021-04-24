@@ -1,0 +1,71 @@
+{% extends 'website_layouts/main_website.html' %}
+
+{% block content %}
+{% load static %}
+
+
+  <!-- Header -->
+     <header id="home" class="header text-white text-center text-lg-left" style="background-color: #000001" >
+      <canvas class="constellation" data-color="rgba(255,255,255,0.3)"></canvas>
+      <div class="container">
+        <div class="row align-items-center h-100">
+
+          <div class="col-md-7 mx-auto">
+              <h1 style="text-align:center"><strong>Request A { Check N Face } Demo</strong></h1><br>
+            <br>
+          </div>
+
+        </div>
+      </div>
+    </header><!-- /.header -->
+
+      <!--
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      | Request form
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      !-->
+      <section class="section" style="background-color:#f3f3f3">
+        <div class="container">
+          <div class="row align-items-center">
+
+            <div class="col-lg-5 mr-auto text-center">
+              <h3 class="heading-alt fw-300">Request a Check N Face demo</h3><br>
+              <p>We can't wait to show you what we produced by our great team using the latest AI technologies.</p>
+              <br>
+
+              <form action="{% url 'add_new_request' %}" method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}
+                <div class="alert alert-success d-on-success">Check your email in 24 hours. We'll contact you soon.</div>
+
+                <input type="hidden" name="subject" value="Request demo">
+
+                <div class="form-group">
+                  <input class="form-control" type="text" name="name" placeholder="Name">
+                </div>
+
+                <div class="form-group">
+                  <input class="form-control" type="text" name="company_name" placeholder="Company name">
+                </div>
+
+                <div class="form-group">
+                  <input class="form-control" type="email" name="email" placeholder="Work email">
+                </div>
+
+                <div class="form-group">
+                  <input class="form-control" type="text" name="phone" placeholder="Phone number">
+                </div>
+
+                <button class="btn btn-success btn-block" type="submit">Request a Demo</button>
+              </form>
+            </div>
+
+
+            <div class="col-lg-5 mx-auto">
+              <img src="{%static 'assets/img/main-website/mac-2.jpg' %}" alt="..." data-aos="fade-up">
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+{% endblock %}

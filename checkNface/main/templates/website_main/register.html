@@ -1,0 +1,65 @@
+{% extends 'website_layouts/register_website.html' %}
+
+{% block content %}
+{% load static %}
+
+  <body class="layout-centered bg-img" style="background-image: url({% static 'assets/img/main-website/view-1.jpeg' %})">
+
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <div class="bg-white rounded shadow-7 w-400 mw-100 p-6">
+        <p><a href="#"><img src="{%static 'assets/img/main-website/logo-login.png' %}" alt="logo"></a></p>
+        <h5 class="mb-7" style="text-align: center">Create an account</h5>
+
+        <form method="POST">
+            <span style="color:red; font-weight: 300">
+            {% for field, error in form.errors.items %}
+                {% if field != '__all__' %}{{ field }}{% endif %}
+                {{ error | striptags }} <br>
+            {% endfor %}
+            <br></span>
+            {% csrf_token %}
+          <div class="form-group">
+            <input type="text" class="form-control" name="username" placeholder="Your Name">
+          </div>
+
+          <div class="form-group">
+            <input type="email" class="form-control" name="email" placeholder="Email Address">
+          </div>
+
+          <div class="form-group">
+            <input type="password" class="form-control" name="password1" placeholder="Password">
+          </div>
+
+          <div class="form-group">
+            <input type="password" class="form-control" name="password2" placeholder="Password (confirm)">
+          </div>
+
+          <div class="form-group py-3">
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input">
+              <label class="custom-control-label">I agree to the <a class="ml-1" href="terms.html">terms of service</a></label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <button class="btn btn-block btn-primary" type="submit">Register</button>
+          </div>
+        </form>
+
+{#        <div class="divider">Or Register With</div>#}
+{#        <div class="text-center">#}
+{#          <a class="btn btn-circle btn-sm btn-facebook mr-2" href="#"><i class="fa fa-facebook"></i></a>#}
+{#          <a class="btn btn-circle btn-sm btn-google mr-2" href="#"><i class="fa fa-google"></i></a>#}
+{#          <a class="btn btn-circle btn-sm btn-twitter" href="#"><i class="fa fa-twitter"></i></a>#}
+{#        </div>#}
+
+        <p class="text-center text-muted small-2">Already a member? <a href="{% url 'login' %}">Login here</a></p>
+      </div>
+
+    </main><!-- /.main-content -->
+
+
+{% endblock %}

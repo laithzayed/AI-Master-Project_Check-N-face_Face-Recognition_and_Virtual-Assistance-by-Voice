@@ -1,0 +1,38 @@
+{% extends 'dashboard_layouts/main_dashboard.html' %}
+
+{% block content %}
+{% load static %}
+
+
+    <!-- begin:: Content -->
+
+    <!--Begin::Dashboard 1-->
+    <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
+
+        <!-- begin:: Content Head -->
+        <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+            <div class="kt-subheader__main">
+                <h3 class="kt-subheader__title">Dashboard</h3>
+                <span class="kt-subheader__separator kt-subheader__separator--v"></span>
+                <span class="kt-subheader__desc">If you need any help go for Help section</span>
+                <a href="{% url 'helps' %}" class="btn btn-label-warning btn-bold btn-sm btn-icon-h kt-margin-l-10">
+                    Go Now
+                </a>
+                <div class="kt-input-icon kt-input-icon--right kt-subheader__search kt-hidden">
+                    <input type="text" class="form-control" placeholder="Search order..." id="generalSearch">
+                    <span class="kt-input-icon__icon kt-input-icon__icon--right">
+										<span><i class="flaticon2-search-1"></i></span>
+									</span>
+                </div>
+            </div>
+
+        </div>
+    </div><br>
+
+    <!-- begin:: Content -->
+    <br><br><br>
+    <center><h1>Hello Buddy!</h1></center>
+
+
+{% endblock %}
+

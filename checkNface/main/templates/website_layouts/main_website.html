@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <title>Check N Face || Your Future AI Assistance for Attendance</title>
+
+    <!-- Styles -->
+    <link href="{%static 'assets/css/page.min.css' %}" rel="stylesheet">
+    <link href="{%static 'assets/css/style.css' %}" rel="stylesheet">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="{%static 'assets/img/apple-touch-icon.png' %}">
+    <link rel="icon" href="{%static 'assets/img/main-website/favicon.png' %}">
+    <style>::-webkit-scrollbar {width: 10px;}  ::-webkit-scrollbar-track { background: #9d9d9d;}  ::-webkit-scrollbar-thumb {background: #0c043c;}  ::-webkit-scrollbar-thumb:hover {background: linear-gradient(to bottom, #ff6600 0%, #333399 100%);}</style>
+  </head>
+
+  <body>
+
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light navbar-stick-dark" data-navbar="smart">
+      <div class="container">
+
+        <div class="navbar-left mr-8">
+          <button class="navbar-toggler" type="button"><span class="navbar-toggler-icon"></span></button>
+          <a class="navbar-brand" href="{% url 'homepage' %}">
+            <img class="logo-dark" src="{%static 'assets/img/logo-dark.png' %}" alt="logo">
+            <img class="logo-light" src="{%static 'assets/img/logo-light.png' %}" alt="logo">
+          </a>
+        </div>
+
+        <section class="navbar-mobile">
+          <nav class="nav nav-navbar mr-auto" >
+            <a class="nav-link" href="{% url 'homepage' %}">Home</a>
+            <a class="nav-link" href="{% url 'about-us' %}">About us</a>
+            <a class="nav-link" href="{% url 'attendance' %}">Attendance Area</a>
+            <a class="nav-link" href="{% url 'how-it-works' %}">How it works</a>
+            <a class="nav-link" href="{% url 'contact-us' %}">Contact us</a>
+            {% if user.username == '' %}
+              <a dir="rtl" class="nav-link ml-5" href="{% url 'login' %}">Login</a>
+                <a dir="rtl" class="nav-link" href="{% url 'virtual_assistance' %}" style="background-color:#261689; color: white; text-align: center">AI Assistance</a>
+            {% elif user.username != '' %}
+              <a dir="rtl" class="nav-link ml-7" href="{% url 'dashboard' %}">Go to Dashboard</a>
+            {% endif %}
+          </nav>
+
+        </section>
+
+      </div>
+    </nav><!-- /.navbar -->
+
+
+
+   {% block content %}
+
+     {% endblock %}
+
+    <!--
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      | CTA
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      !-->
+      <section class="section py-7" style="background-color: #1f162f">
+        <div class="container">
+          <div class="row gap-y align-items-center">
+            <div class="col-md-9">
+              <h4 class="mb-0 text-white text-center text-md-left">Do you Want a Demo? You can order your own Check N Face demo now!</h4>
+            </div>
+
+            <div class="col-md-3 text-center text-md-right">
+              <a class="btn btn-lg btn-round btn-light" href="{% url 'request-demo' %}">Request a demo now</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- Footer -->
+      <footer class="footer py-7" style="padding-bottom: 0px;">
+        <div class="container">
+          <div class="row gap-y">
+
+            <div class="col-md-3 col-xl-3">
+              <p class="text-center"><a href="#"><img src="{%static 'assets/img/logo-dark.png' %}" alt="logo"></a></ptext-center>
+              <p class="text-center">Your future AI assistance</p>
+            </div>
+
+            <div class="col-6 col-md-3 col-xl-3" style="justify-content: center; text-align: center">
+              <h6 class="mb-4 mt-1"  style="justify-content: center; text-align: center"><bold>Information</bold></h6>
+              <div class="nav flex-column" style="justify-content: center; text-align: center">
+                <a class="nav-link" href="{% url 'about-us' %}">About</a>
+                <a class="nav-link" href="{% url 'contact-us' %}">Contact</a>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-3 col-xl-3">
+              <h6 class="mb-4 mt-1"  style="justify-content: center; text-align: center"><bold>Support</bold></h6>
+              <div class="nav flex-column" style="justify-content: center; text-align: center" >
+               <a class="nav-link" href="{% url 'how-it-works' %}">How It Works</a>
+               <a class="nav-link" href="{% url 'contact-us' %}">Contact us</a>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-3 col-xl-2 text-center">
+
+              <div class="social social-bordered">
+                <a class="social-facebook" href="#"><i class="fa fa-facebook"></i></a>
+                <a class="social-twitter" href="#"><i class="fa fa-twitter"></i></a>
+                <a class="social-youtube" href="#"><i class="fa fa-youtube"></i></a>
+                <a class="social-instagram" href="#"><i class="fa fa-instagram"></i></a>
+              </div>
+              <br>
+            </div>
+
+          </div>
+        </div><hr>
+            <div class="col-md-12 text-center text-md-center">
+              <small class="opacity-100">© 2021 Check N Face. All rights reserved.</small>
+            </div>
+      </footer><!-- /.footer -->
+
+
+
+
+        <div class="container">
+          <div class="row gap-y">
+
+
+
+          </div>
+        </div>
+
+
+    <!-- Scripts -->
+    <script src="{%static 'assets/js/page.min.js' %}"></script>
+    <script src="{%static 'assets/js/script.js' %}"></script>
+
+  </body>
+</html>

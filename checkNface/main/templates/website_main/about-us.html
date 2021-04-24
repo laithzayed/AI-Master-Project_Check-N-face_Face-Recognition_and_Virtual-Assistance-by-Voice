@@ -1,0 +1,149 @@
+{% extends 'website_layouts/main_website.html' %}
+
+{% block content %}
+{% load static %}
+
+
+  <!-- Header -->
+     <header id="home" class="header text-white text-center text-lg-left" style="background-color: #000001" >
+      <canvas class="constellation" data-color="rgba(255,255,255,0.3)"></canvas>
+      <div class="container">
+        <div class="row align-items-center h-100">
+
+          <div class="col-md-8 mx-auto">
+            <h1 style="text-align:center">About us</h1><br>
+            <p class="lead-2">Our startup was founded in 2021 with a mission to create a great attendance system to check-in and check-out your (employees, students, ...etc) effectively and easily.<br><br> For a great dreamer to enhance their attendance system in their company we introduce our product for you. we are using a strong algorithm for face recognition depends on latest artificial intelligence technology and neural network.</p>
+          </div>
+
+        </div>
+      </div>
+    </header><!-- /.header -->
+
+
+      <!--
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      | Slider
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      !-->
+      <section class="section p-0">
+        <div data-provide="slider" data-autoplay="true" data-slides-to-show="2" data-css-ease="linear" data-speed="12000" data-autoplay-speed="0" data-pause-on-hover="false">
+          <div class="p-2">
+            <div class="rounded bg-img h-300" style="background-image: url({%static 'assets/img/main-website/m-1.jpeg' %})"></div>
+          </div>
+
+          <div class="p-2">
+            <div class="rounded bg-img h-300" style="background-image: url({%static 'assets/img/main-website/m-2.jpg' %})"></div>
+          </div>
+
+          <div class="p-2">
+            <div class="rounded bg-img h-300" style="background-image: url({%static 'assets/img/main-website/m-3.jpg' %})"></div>
+          </div>
+
+          <div class="p-2">
+            <div class="rounded bg-img h-300" style="background-image: url({%static 'assets/img/main-website/m-1.jpeg' %})"></div>
+          </div>
+        </div>
+      </section>
+
+
+  <section id="home" class="header text-white h-fullscreen text-center text-lg-left" style="background-color: #000001" >
+      <canvas class="constellation" data-color="rgba(255,255,255,0.3)"></canvas>
+      <div class="container">
+        <div class="row align-items-center h-100">
+
+          <div class="col-md-7 mx-auto">
+              <h1 style="text-align:center"><strong>Our Mission</strong></h1><br>
+            <br>
+
+              <h5>
+                <i class="ti-check text-success mr-2"></i>
+                <span> Develop AI attendance system to our great clients</span>
+              </h5>
+
+              <h5>
+                <i class="ti-check text-success mr-2"></i>
+                <span> Support our customers once signing a contract</span>
+              </h5>
+
+              <h5>
+                <i class="ti-check text-success mr-2"></i>
+                <span> Stay updated our neural network to increase accuracy more and more</span>
+              </h5>
+
+              <h5>
+                <i class="ti-check text-success mr-2"></i>
+                <span> Deliver a high quality of face recognition</span>
+              </h5>
+
+          </div>
+
+        </div>
+      </div>
+    </section><!-- /.header -->
+
+
+      <section class="section">
+        <div class="container">
+          <header class="section-header">
+            <h2>Testimonials</h2>
+            <hr>
+            <p class="lead">Join hundreds of satisfied customers using our product globally.</p>
+          </header>
+
+
+          <div class="row gap-y">
+
+            <div class="col-md-6">
+              <div class="card shadow-3">
+                <div class="card-body px-6">
+                  <div class="rating mb-3">
+                    <label class="fa fa-star active"></label>
+                    <label class="fa fa-star active"></label>
+                    <label class="fa fa-star active"></label>
+                    <label class="fa fa-star active"></label>
+                    <label class="fa fa-star active"></label>
+                  </div>
+
+                  <p class="text-quoted mb-5">I'm using Face N Check and it is amazing, It make our employees attendance easily and remotely by face recognition.</p>
+                  <div class="media align-items-center pb-0">
+                    <img class="avatar avatar-xs mr-3" src="{%static 'assets/img/main-website/man-1.jpg' %}" alt="...">
+                    <div class="media-body lh-1">
+                      <div class="fw-400 small-1 mb-1">Dan Lok</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-md-6">
+              <div class="card shadow-3">
+                <div class="card-body px-6">
+                  <div class="rating mb-3">
+                    <label class="fa fa-star active"></label>
+                    <label class="fa fa-star active"></label>
+                    <label class="fa fa-star active"></label>
+                    <label class="fa fa-star active"></label>
+                    <label class="fa fa-star active"></label>
+                  </div>
+
+                  <p class="text-quoted mb-5">I appreciate this product and the AI developers there, they give us all support we need to make everything work awesome.</p>
+                  <div class="media align-items-center pb-0">
+                    <img class="avatar avatar-xs mr-3" src="{%static 'assets/img/main-website/man-2.jpg' %}" alt="...">
+                    <div class="media-body lh-1">
+                      <div class="fw-400 small-1 mb-1">Ahmed Ali</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+
+        </div>
+      </section>
+
+
+{% endblock %}

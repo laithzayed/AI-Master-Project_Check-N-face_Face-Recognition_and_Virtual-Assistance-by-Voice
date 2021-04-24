@@ -1,0 +1,97 @@
+{% extends 'dashboard_layouts/main_dashboard.html' %}
+
+{% block content %}
+{% load static %}
+<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
+
+    <!-- begin:: Content Head -->
+    <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+        <div class="kt-subheader__main">
+            <h3 class="kt-subheader__title">Help</h3>
+            <span class="kt-subheader__separator kt-subheader__separator--v"></span>
+            <div class="kt-input-icon kt-input-icon--right kt-subheader__search kt-hidden">
+                <input type="text" class="form-control" placeholder="Search order..." id="generalSearch">
+                <span class="kt-input-icon__icon kt-input-icon__icon--right">
+										<span><i class="flaticon2-search-1"></i></span>
+									</span>
+            </div>
+        </div>
+
+    </div>
+</div><br><br>
+
+      <section class="section" style="text-align: center; justify-content: center">
+          <header class="section-header">
+            <h2>Frequently Asked Questions</h2>
+            <hr style="width: 500px;">
+            <p>Got a question? We've got answers. We feel happy when we can help you more.</p>
+          </header><br><br>
+
+
+          <div class="row">
+            <div class="col-md-8 mx-auto">
+
+              <div class="accordion accordion-connected accordion-arrow-right" id="accordion-1">
+                <div class="card"  style="background-color:#fff">
+                  <h2 class="card-title">
+                    <h5 data-toggle="collapse" href="#collapse-1-1" style="color:#21318b; cursor:pointer; padding:5px">How I can add a new employee to my Check N Face system?</h4>
+                  </h2>
+
+                  <div id="collapse-1-1" class="collapse" data-parent="#accordion-1">
+                    <div class="card-body" style="color:#000000; cursor:pointer; padding:10px">
+                      <h5>Ans: Great!. You should go to (Manage Employees) page => Then you can add your new employee.</h5>
+                    </div>
+                  </div>
+                </div>
+
+                    <div class="accordion accordion-connected accordion-arrow-right" id="accordion-1">
+                <div class="card"  style="background-color:#fff">
+                  <h2 class="card-title">
+                    <h5 data-toggle="collapse" href="#collapse-1-2" style="color:#21318b; cursor:pointer; padding:5px">Is this a secure site for our stored data?</h5>
+                  </h2>
+
+                  <div id="collapse-1-2" class="collapse" data-parent="#accordion-1">
+                    <div class="card-body" style="color:#000000; cursor:pointer">
+                      <h5>Ans: Absolutely!. Our website is 100% tatly secured by the latest certificate and it have a strong secured system.</h5>
+                    </div>
+                  </div>
+                </div>
+
+                          <div class="accordion accordion-connected accordion-arrow-right" id="accordion-1">
+                <div class="card"  style="background-color:#fff">
+                  <h2 class="card-title">
+                    <h5 data-toggle="collapse" href="#collapse-1-3" style="color:#21318b; cursor:pointer; padding:5px">What I should do If I insert a wrong data when I added a new user?</h5>
+                  </h2>
+
+                  <div id="collapse-1-3" class="collapse" data-parent="#accordion-1">
+                    <div class="card-body" style="color:#000000; cursor:pointer">
+                      <h5>Ans: You can go to the manage dashboard, then you will see one icon that's named => (Edit) in the Action side. <br> Then Edit any field you want. </h5>
+                    </div>
+                  </div>
+                </div>
+
+                                <div class="accordion accordion-connected accordion-arrow-right" id="accordion-1">
+                <div class="card"  style="background-color:#fff">
+                  <h2 class="card-title">
+                    <h5 data-toggle="collapse" href="#collapse-1-4" style="color:#21318b; cursor:pointer; padding:5px">Where I should go to read Check-in data?</h5>
+                  </h2>
+
+                  <div id="collapse-1-4" class="collapse" data-parent="#accordion-1">
+                    <div class="card-body" style="color:#000000; cursor:pointer">
+                      <h5>Ans: We have a Check-in section in the sidebar. you can view all of your user checked-in attendance.</h5>
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
+
+{% endblock %}

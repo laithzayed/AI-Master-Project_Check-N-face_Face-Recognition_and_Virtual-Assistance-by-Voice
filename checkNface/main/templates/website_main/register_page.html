@@ -1,0 +1,29 @@
+{% extends 'website_layouts/register_website.html' %}
+
+{% block content %}
+{% load static %}
+
+  <body class="layout-centered bg-img" style="background-image: url({% static 'assets/img/main-website/view-1.jpeg' %});">
+
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <div class="bg-white rounded shadow-7 w-400 mw-100 p-6">
+          <p><a href="#"><img src="{%static 'assets/img/main-website/logo-login.png' %}" alt="logo"></a></p>
+        <h5 class="mb-7" style="text-align: center">Sorry!. You can't register,<br> Go to your HR to get your account</h5>
+
+{#        <div class="divider">Or Login With</div>#}
+{#        <div class="text-center">#}
+{#          <a class="btn btn-circle btn-sm btn-facebook mr-2" href="#"><i class="fa fa-facebook"></i></a>#}
+{#          <a class="btn btn-circle btn-sm btn-google mr-2" href="#"><i class="fa fa-google"></i></a>#}
+{#          <a class="btn btn-circle btn-sm btn-twitter" href="#"><i class="fa fa-twitter"></i></a>#}
+{#        </div>#}
+
+        <p class="text-center text-muted small-2">Do you want visit login page? <a href="{% url 'login' %}">Go to login</a></p>
+      </div>
+
+    </main><!-- /.main-content -->
+
+
+{% endblock %}
