@@ -7,7 +7,7 @@
     <!-- begin:: Content Head -->
     <div class="kt-subheader   kt-grid__item" id="kt_subheader">
         <div class="kt-subheader__main">
-            <h3 class="kt-subheader__title">Requested demo - list</h3>
+            <h3 class="kt-subheader__title">Cotact us - list</h3>
             <span class="kt-subheader__separator kt-subheader__separator--v"></span>
             <span class="kt-subheader__desc">If you need any help go for Help section</span>
             <a href="{% url 'helps' %}" class="btn btn-label-warning btn-bold btn-sm btn-icon-h kt-margin-l-10">
@@ -24,13 +24,13 @@
     </div>
 </div><br>
 
-<div class="container-fluid col-10">
+<div class="container-fluid col-11">
     <!--begin::Portlet-->
     <div class="kt-portlet">
         <div class="kt-portlet__head">
             <div class="kt-portlet__head-label">
                 <h3 class="kt-portlet__head-title">
-                    Show ALL data from requested demo list
+                    Show ALL data from contact us list
                 </h3>
             </div>
         </div>
@@ -46,22 +46,20 @@
                         <thead class="thead-dark" style="text-align:center">
                         <th><strong>#</strong></th>
                         <th><strong>Name</strong></th>
-                        <th><strong>Company Name</strong></th>
                         <th><strong>Email</strong></th>
-                        <th><strong>Phone</strong></th>
+                        <th><strong>Message</strong></th>
 {#{{--                        <th>Edit</th>--}}#}
 {#{{--                        <th>Delete</th>--}}#}
                         </thead>
                         <tbody>
                         <tr>
 
-                        {% for request_demo in request_demo %}
+                        {% for contact_us in contact_us %}
                             <tr>
-                                <td>{{request_demo.id}}</td>
-                                <td>{{request_demo.name}}</td>
-                                <td>{{request_demo.company_name}}</td>
-                                <td>{{request_demo.email}}</td>
-                                <td>{{request_demo.phone}}</td>
+                                <td>{{contact_us.id}}</td>
+                                <td>{{contact_us.name}}</td>
+                                <td>{{contact_us.email}}</td>
+                                <td style="color: darkblue"><strong>{{contact_us.message}}</strong></td>
 {#{{--                                <td>{{$employee->employee_password}}</td>--}}#}
 {#{{--                                <td>{{$employee->employee_latitude}}</td>--}}#}
 {#{{--                                <td>{{$employee->employee_longitude}}</td>--}}#}

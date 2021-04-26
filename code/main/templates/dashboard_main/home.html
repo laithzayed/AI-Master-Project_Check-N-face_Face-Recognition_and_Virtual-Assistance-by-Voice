@@ -1,0 +1,40 @@
+{% extends 'dashboard_layouts/main_dashboard.html' %}
+
+
+{% block content %}
+{% load static %}
+
+         <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+            <div class="kt-subheader__main">
+                <h3 class="kt-subheader__title">Dashboard</h3>
+                <span class="kt-subheader__separator kt-subheader__separator--v"></span>
+                <span class="kt-subheader__desc">If you need any help go for Help section</span>
+                <a href="{% url 'helps' %}" class="btn btn-label-warning btn-bold btn-sm btn-icon-h kt-margin-l-10">
+                    Go Now
+                </a>
+        </div>
+    </div><br>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card">
+                <h5 class="card-header" style="color:black"></h5>
+
+                <div class="card-body">
+                     <div class="col-md-12 order-md-first" style="justify-content:center; text-align:center">
+                         <h2 style="color:black">Welcome back, {{ user.get_username }}</h2><hr>
+                        <img class="rounded shadow-2" src="{%static 'assets/img/main-website/logo-login.png' %}" alt="..."  style="width:50%;text-align:center; justify-content:center;">
+                    </div>
+                   <div></div><br><hr>
+                    <center>You are <strong>logged in now!</center></strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+

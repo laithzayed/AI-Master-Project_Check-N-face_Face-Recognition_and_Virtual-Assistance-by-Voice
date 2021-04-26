@@ -1,0 +1,31 @@
+{% extends 'website_layouts/main_website.html' %}
+
+{% block content %}
+{% load static %}
+
+
+  <!-- Header -->
+     <header id="home" class="header text-white h-fullscreen text-center text-lg-left" style="background-color: #000001" >
+      <canvas class="constellation" data-color="rgba(255,255,255,0.3)"></canvas>
+      <div class="container">
+        <div class="row align-items-center h-100">
+
+          <div class="col-md-12 mx-auto">
+              <h1 style="text-align:center"><strong>Attendance System</strong></h1><br>
+            <br>
+
+              <div style="text-align: center">
+                  <h2>Register your attendance here</h2><br>
+                  <a type="submit" href="/attendance_check_in" class="btn btn-success btn-lg" style="margin: 20px; width:30%; border-radius:10px">Check-in</a><br>
+                  <a type="submit" href="/attendance_check_out" class="btn btn-success btn-lg" style="margin: 20px; width:30%; border-radius:10px">Check-out</a><br>
+              <p>Press "esc" to close webcam window<br> or when you finished check-in/out</p>
+              </div>
+
+          </div>
+
+        </div>
+      </div>
+    </header><!-- /.header -->
+
+
+{% endblock %}

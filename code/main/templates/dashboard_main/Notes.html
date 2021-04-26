@@ -1,0 +1,58 @@
+{% extends 'dashboard_layouts/main_dashboard.html' %}
+
+{% block content %}
+{% load static %}
+<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
+
+    <!-- begin:: Content Head -->
+    <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+        <div class="kt-subheader__main">
+            <h3 class="kt-subheader__title">Notes</h3>
+            <span class="kt-subheader__separator kt-subheader__separator--v"></span>
+            <span class="kt-subheader__desc">If you need any help go for Help section</span>
+            <a href="{% url 'helps' %}" class="btn btn-label-warning btn-bold btn-sm btn-icon-h kt-margin-l-10">
+                Go Now
+            </a>
+            <div class="kt-input-icon kt-input-icon--right kt-subheader__search kt-hidden">
+                <input type="text" class="form-control" placeholder="Search order..." id="generalSearch">
+                <span class="kt-input-icon__icon kt-input-icon__icon--right">
+										<span><i class="flaticon2-search-1"></i></span>
+									</span>
+            </div>
+        </div>
+
+    </div>
+</div><br>
+
+    <div class="container-fluid col-11">
+    <!--begin::Portlet-->
+    <div class="kt-portlet">
+        <div class="kt-portlet__head">
+            <div class="kt-portlet__head-label">
+                <h3 class="kt-portlet__head-title">
+                    Some notes will help you in using Check N Face to maxpimum level.
+                </h3>
+            </div>
+        </div>
+        <div class="kt-portlet__body">
+
+            <!--begin::Section-->
+            <div class="kt-section">
+                        <h5>*Notes will help you by using your Check N Face system.</h5><br><br>
+                <h5 class="kt-section__content" style="color:black">
+                    <ol>
+                        <li>When you need to add new users (employees, students...etc) make sure to use all real data for them.</li><br>
+                        <li>Make sure to get the image file from your users, and this file name by the same name of users.</li><br>
+                        <li>You can use the system Anytime and Anywhere.</li><br>
+                        <li>Artificial Intelligence will maximize and excel your work, so feel free to use in a good way.</li><br>
+                    </ol>
+                </h5>
+            </div>
+            <!--end::Section-->
+        </div>
+    </div>
+    <!--End::Section-->
+    <!--End::Dashboard 1-->
+</div>
+
+{% endblock %}

@@ -53,16 +53,13 @@
                             <h3 class="kt-portlet__head-title">
                                 Show ALL Employees ||
                             </h3>
-                            <a  class="btn btn btn-success" href="{% url 'add_employees' %}" >Add new employees</a>
                         </div>
                     </div>
                     <div class="kt-portlet__body">
 
                         <!--begin::Section-->
                         <div class="kt-section">
-												<span class="kt-section__info">
-													*Note: Make sure before uploaded to let users image name will be the same of your username (employees, students...etc).
-												</span>
+                            <center><a class="btn btn btn-success btn" href="{% url 'add_employees' %}" >Add new employees</a></center><br>
                             <div class="kt-section__content">
                                 <table class="table table-striped">
                                     <thead class="thead-dark" style="text-align:center">
@@ -72,7 +69,7 @@
                                     <th>Image</th>
 {#{{--                                    <th>Phone</th>--}}#}
 {#{{--                                    <th>Address</th>--}}#}
-                                    <th>Address</th>
+{#                                    <th>Address</th>#}
 {#{{--                                    <th>Gender</th>--}}#}
                                     <th>Action</th>
                                     </thead>
@@ -85,10 +82,9 @@
                                             <td>{{ employees.employee_name}} </td>
                                             <td>{{ employees.employee_email }}</td>
                                             <td><img src="{%static 'uploads/ImageAttendance/' %}{{ employees.image }}" alt="{{ employee.image }}" border-radius='20%' cursor='pointer' width='80px' height='80px' ></td>
-                                            <td>{{ employees.employee_address }}</td>
+{#                                            <td>{{ employees.employee_address }}</td>#}
                                             <td><a href="/edit/{{ employees.id }}" style="color:darkblue"><i class="fas fa-edit"></i></a>
                                             <a href="/delete/{{ employees.id }}" style="color:red"><i class="far fa-trash-alt"></i></a></td>
-
                                         </tr>
                                   {% endfor %}
                                     </tbody>

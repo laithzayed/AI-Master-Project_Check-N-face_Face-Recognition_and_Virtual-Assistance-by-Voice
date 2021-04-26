@@ -1,7 +1,9 @@
 from django.shortcuts import render, HttpResponse, redirect, HttpResponseRedirect
 from .models import Employee, CheckIn, CheckOut, RequestDemo, ContactUs
 from .forms import EmployeeForm, RequestDemoForm, ContactUsForm, RegisterForm
+from django.core.paginator import Paginator
 import requests
+# Face recognition
 import cv2
 import numpy as np
 import face_recognition
@@ -10,13 +12,12 @@ from time import ctime
 from datetime import datetime
 from datetime import date
 import mysql.connector
-
+# Auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password, check_password
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth import get_user_model
-
 # Start Sandra virtual AI Assistance
 import speech_recognition as sr
 import webbrowser
@@ -172,6 +173,10 @@ def destroy(request, id):
 #CRUD for Check_IN
 def read_checkin(request):
     employee_checkin = CheckIn.objects.all().order_by('-id')
+    paginator = Paginator(employee_checkin, 20)  # Show 25 contacts per page.
+    page_number = request.GET.get('page')
+    employee_checkin = paginator.get_page(page_number)
+
     return render(request, 'dashboard_main/Check_In.html', {'employee_checkin': employee_checkin})
 
 
@@ -180,6 +185,9 @@ def read_checkin(request):
 @login_required
 def read_checkout(request):
     employee_checkout = CheckOut.objects.all().order_by('-id')
+    paginator = Paginator(employee_checkout, 10)  # Show 25 contacts per page.
+    page_number = request.GET.get('page')
+    employee_checkout = paginator.get_page(page_number)
     return render(request, 'dashboard_main/Check_Out.html', {'employee_checkout': employee_checkout})
 
 # ///////////////////////
@@ -227,6 +235,10 @@ def howitworks(request):
 
 def contactus(request):
     return render(request, 'website_main/contact-us.html')
+
+
+def done(request):
+    return render(request, 'website_main/done.html')
 
 
 def contactus_read(request):
@@ -294,9 +306,6 @@ def create_request(request):
 # ////////////////////////////
 
 
-
-
-
 def attendance(request):
     return render(request, 'website_main/attendance.html')
 
@@ -326,7 +335,7 @@ def attendance_check_in(request):
     print(classNames)
 
 
-    def findEncodings(images):
+    def getEncodings(images):
         encodeList = []
         for img in images:
             img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
@@ -335,13 +344,8 @@ def attendance_check_in(request):
         return encodeList
 
 
-    def markAttendance(name, user_id):
-        # myDataList = f.readlines()
-        # nameList = []
-        # for line in myDataList:
-        #     entry = line.split(',')
-        #     nameList.append(entry[0])
-        # if name not in nameList:
+    def bluePrintAttendance(name, user_id):
+
         sql = "INSERT INTO checkin (name, day,time, user_id) VALUES (%s, %s,%s, %s)"
         now = datetime.now()
         dtString = now.strftime('%Y-%b-%d %H:%M:%S')
@@ -350,33 +354,17 @@ def attendance_check_in(request):
         mycursor.execute(sql, val)
         mydb.commit()
 
+
         print(mycursor.rowcount, "record inserted.")
         print(mycursor)
-        # exit()
-
-        # mycursor.execute("SHOW TABLE")
-        # for x in mycursor:
-        #     print(x)
+        # cv2.destroyAllWindows()
 
 
-    # with open('Attendance.csv','r+') as f:
-    #     myDataList = f.readlines()
-    #     nameList = []
-    #     for line in myDataList:
-    #         entry = line.split(',')
-    #         nameList.append(entry[0])
-    #     if name not in nameList:
-    #         now = datetime.now()
-    #         dtString = now.strftime('%H:%M:%S')
-    #         f.writelines(f'\n{name},{dtString}')
-    # if name in nameList:
-    #     print("Alhamdulelah, I Did it")
-
-
-    encodeListKnown = findEncodings(images)
+    encodeListKnown = getEncodings(images)
     print('Encoding Complete')
 
     cap = cv2.VideoCapture(0)
+    print('three yes')
 
     while True:
         success, img = cap.read()
@@ -391,6 +379,7 @@ def attendance_check_in(request):
             faceDis = face_recognition.face_distance(encodeListKnown, encodeFace)
             print(faceDis)
             matchIndex = np.argmin(faceDis)
+
 
             if matches[matchIndex]:
                 name = classNames[matchIndex].upper()
@@ -421,32 +410,19 @@ def attendance_check_in(request):
                 cv2.rectangle(img, (x1, y1), (x2, y2), (0, 255, 0), 2)
                 cv2.rectangle(img, (x1, y2 - 35), (x2, y2), (0, 255, 0), cv2.FILLED)
                 cv2.putText(img, name, (x1 + 6, y2 - 6), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255), 2)
-                markAttendance(name,user_id)
+                bluePrintAttendance(name,user_id)
+                print('one yes')
 
         cv2.imshow('webcam', img)
-        cv2.waitKey(1)
+        key = cv2.waitKey(1)
+        if key == ord('n') or key == ord('p') or key == 27:
+            break
 
+    # Exit->All capture Done,
+    cap.release()
+    cv2.destroyAllWindows()
+    return redirect('done')
 
-    # faceLoc = face_recognition.face_locations(imgElon)[0]
-    # encodeElon = face_recognition.face_encodings(imgElon)[0]
-    # cv2.rectangle(imgElon, (faceLoc[3], faceLoc[0]), (faceLoc[1], faceLoc[2]), (255, 0, 255), 2)
-    #
-    # print(faceLoc)
-    #
-    # faceLocTest = face_recognition.face_locations(imgTest)[0]
-    # encodeTest = face_recognition.face_encodings(imgTest)[0]
-    # cv2.rectangle(imgTest, (faceLocTest[3], faceLocTest[0]), (faceLocTest[1], faceLocTest[2]), (50, 0, 255), 2)
-    #
-    # faceLocTest2 = face_recognition.face_locations(imgTest2)[0]
-    # encodeTest2 = face_recognition.face_encodings(imgTest2)[0]
-    # cv2.rectangle(imgTest2, (faceLocTest2[3], faceLocTest2[0]), (faceLocTest2[1], faceLocTest2[2]), (100, 0, 255), 2)
-    #
-    # print(faceLocTest2)
-    #
-    # # Results to compare
-    # results = face_recognition.compare_faces([encodeElon], encodeTest)
-    # faceDis = face_recognition.face_distance([encodeElon], encodeTest)
-    # results_laith_with_elon = face_recognition.compare_faces([encodeElon], encodeTest2)
 
 
 def attendance_check_out(request):
@@ -474,7 +450,7 @@ def attendance_check_out(request):
     print(classNames)
 
 
-    def findEncodings(images):
+    def getEncodings(images):
         encodeList = []
         for img in images:
             img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
@@ -483,7 +459,7 @@ def attendance_check_out(request):
         return encodeList
 
 
-    def markAttendance(name, user_id):
+    def bluePrintAttendance(name, user_id):
         sql = "INSERT INTO checkout (name, day,time, user_id) VALUES (%s, %s,%s, %s)"
         now = datetime.now()
         dtString = now.strftime('%Y-%b-%d %H:%M:%S')
@@ -496,7 +472,7 @@ def attendance_check_out(request):
         print(mycursor)
         # exit()
 
-    encodeListKnown = findEncodings(images)
+    encodeListKnown = getEncodings(images)
     print('Encoding Complete')
 
     cap = cv2.VideoCapture(0)
@@ -544,11 +520,17 @@ def attendance_check_out(request):
                 cv2.rectangle(img, (x1, y1), (x2, y2), (0, 255, 0), 2)
                 cv2.rectangle(img, (x1, y2 - 35), (x2, y2), (0, 255, 0), cv2.FILLED)
                 cv2.putText(img, name, (x1 + 6, y2 - 6), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255), 2)
-                markAttendance(name,user_id)
+                bluePrintAttendance(name,user_id)
 
         cv2.imshow('webcam', img)
-        cv2.waitKey(1)
+        key = cv2.waitKey(1)
+        if key == ord('n') or key == ord('p') or key == 27:
+            break
 
+    # Exit->All capture Done,
+    cap.release()
+    cv2.destroyAllWindows()
+    return redirect('done')
 
 def virtual_assistance(request):
     r = sr.Recognizer()
@@ -583,14 +565,6 @@ def virtual_assistance(request):
         if 'who i am?' in voice_data:
             laith_speak('Laith is my boss, He create me lately by using Artifitial Intelegence technology.')
             laith_speak('I Love him to give me a chance to breath and live on this earth')
-        if 'like' in voice_data:
-            laith_speak('mmmm, I"m fine. What about you?')
-        if 'good' in voice_data:
-            laith_speak('Wow. Great to hear that')
-        if 'bad' in voice_data:
-            laith_speak('I feel bad. can i tell you a joke to change your mode?')
-        if 'yes' in voice_data:
-            laith_speak('I miss you')
 
         if 'what is the time now' in voice_data:
             laith_speak(ctime())
@@ -604,19 +578,45 @@ def virtual_assistance(request):
             url = 'https://google.nl/maps/place/' + location + '/&amp;'
             webbrowser.get().open(url)
             laith_speak('Here is the location of ' + location)
-        if 'open' in voice_data:
-            open_youtube = record_audio('Are you want to play your playlist on youtube?')
-            url = 'https://www.youtube.com/watch?v=291kcUaf0rM&list=RD291kcUaf0rM&start_radio=1'
+        if 'open video' in voice_data:
+            open_youtube = record_audio('What are you looking for on youtube?')
+            url = 'https://www.youtube.com/results?search_query=' + open_youtube
             webbrowser.get().open(url)
             laith_speak('Here is what I found for you ' + open_youtube)
+        if 'news' in voice_data:
+            open_cnn = record_audio('Do you want to start news?')
+            url = 'https://tunein.streamguys1.com/cnn-new?ads.cust_params=partnerId%253dydvgH5BP%2526ads_partner_alias%253dydvgH5BP%2526premium%253dfalse%2526abtest%253d%2526language%253den-US%2526stationId%253ds20407%2526is_ondemand%253dfalse%2526genre_id%253dg3124%2526class%253dtalk%25252cspoken%25252cnews%2526is_family%253dfalse%2526is_mature%253dfalse%2526country_region_id%253d227%2526station_language%253denglish%2526programId%253dp341054%2526is_event%253dfalse&url=https%3a%2f%2ftunein.com%2fdesc%2fs20407%2f&description_url=https%3a%2f%2ftunein.com%2fdesc%2fs20407%2f&ads.npa=1&ads.gdfp_req=1&aw_0_1st.playerid=ydvgH5BP&aw_0_1st.skey=1619436777&aw_0_1st.platform=tunein'
+            webbrowser.get().open(url)
+            laith_speak('Here is what I found news for you ' + open_cnn)
+        if 'Homepage' in voice_data:
+            laith_speak('Opening Homepage, Im happy to help you')
+            webbrowser.get().open('http://127.0.0.1:8000/homepage/')
+        if 'about us' in voice_data:
+            laith_speak('Opening about us page, Im happy to help you')
+            webbrowser.get().open('http://127.0.0.1:8000/about-us/')
+        if 'attendance area' in voice_data:
+            laith_speak('Opening Attendance area, Im happy to help you')
+            webbrowser.get().open('http://127.0.0.1:8000/attendance/')
+        if 'How it works' in voice_data:
+            laith_speak('Opening How it works, Im happy to help you')
+            webbrowser.get().open('http://127.0.0.1:8000/how-it-works/')
+        if 'contact us' in voice_data:
+            laith_speak('Opening contact us, Im happy to help you')
+            webbrowser.get().open('http://127.0.0.1:8000/contact-us/')
+
+
         if 'exit' in voice_data:
             exit()
         if 'bye' in voice_data:
+            print('bye')
             exit(1)
         if 'bye sandra' in voice_data:
             exit(1)
         if 'see you later' in voice_data:
             exit(1)
+
+
+
 
     time.sleep(1)
     laith_speak('Hi.')
